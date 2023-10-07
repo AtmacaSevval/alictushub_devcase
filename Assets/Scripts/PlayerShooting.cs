@@ -2,41 +2,45 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    public float range = 10.0f;
-    [SerializeField] public float bulletImpulse= 20.0f;
-    
-    public Rigidbody projectile;
+    [SerializeField] public float ShootSpeed;
+    [SerializeField] public Transform SpawnPoint;
+    [SerializeField] public GameObject Projectile;
 
-    public float shotDelayTime;
-    public float shotInterval;
-    
-    private bool isInThefield = true;
-    void Start(){
-        
-        InvokeRepeating("Shoot", shotDelayTime, shotInterval);
-    }
-    
-    void Update() {
- 
-        
-    }
-    void Shoot(){
- 
-        if (isInThefield){
- 
-            Rigidbody bullet = Instantiate(projectile, transform.position + transform.forward, transform.rotation);
-            bullet.AddForce(transform.forward*bulletImpulse, ForceMode.Impulse);
-        }
- 
- 
-    }
-    
-    public void OnTriggerEnter(Collider other)
+    private bool _isInTheField = false;
+    private GameObject _targetEnemy;
+
+    private void OnEnable()
     {
-        if (other.gameObject.tag.Equals("Enemy"))
-        {
-            Destroy (other.gameObject);
-
-        }
+        EnemyShooting.OnEnemyEnteredField += HandleEnemyEnteredField;
     }
+
+    private void OnDisable()
+    {
+        EnemyShooting.OnEnemyEnteredField -= HandleEnemyEnteredField;
+    }
+
+    private void HandleEnemyEnteredField(GameObject enemy)
+    {
+        _isInTheField = true;
+        _targetEnemy = enemy;
+    }
+    
+    private void Start()
+    {
+        InvokeRepeating("ShootEnemy", 1f, 2f);
+
+    }
+    
+    void ShootEnemy(){
+
+        if (_isInTheField){
+
+            gameObject.transform.LookAt(_targetEnemy.transform);
+            GameObject bullet = Instantiate(Projectile, SpawnPoint.position, transform.rotation);
+            Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
+            bulletRigidbody.AddForce(transform.forward * ShootSpeed, ForceMode.Impulse);
+        }
+
+    }
+    
 }

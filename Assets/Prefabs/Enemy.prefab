@@ -119,10 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d411f8009b544914bc81134b46b4142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootSpeed: 1
-  timeToShoot: 5
-  spawnPosition: {fileID: 1170384147642616299}
-  projectile: {fileID: 6193327468799196600, guid: 3c37ae32d90f448fdb6ab35f054bb6f2,
+  ShootSpeed: 10
+  SpawnPoint: {fileID: 1170384147642616299}
+  Projectile: {fileID: 6193327468799196600, guid: 3c37ae32d90f448fdb6ab35f054bb6f2,
     type: 3}
 --- !u!1001 &8679732570443477830
 PrefabInstance:

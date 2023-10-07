@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6193327468799196604}
   - component: {fileID: 6193327468799196605}
   - component: {fileID: 6193327468799196602}
-  - component: {fileID: 6193327468799196603}
   - component: {fileID: 280484732}
   - component: {fileID: 2750090104278901836}
+  - component: {fileID: 394384693720924351}
   m_Layer: 0
   m_Name: EnemyProjectile
   m_TagString: EnemyProjectile
@@ -86,19 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6193327468799196603
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6193327468799196600}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &280484732
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -111,7 +98,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -127,3 +114,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec5e01530aa74470907cebc2b6f4ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &394384693720924351
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6193327468799196600}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

@@ -1,7 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using TMPro;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    
 }

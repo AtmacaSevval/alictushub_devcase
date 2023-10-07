@@ -1,56 +1,37 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyShooting : MonoBehaviour
 {
-    [SerializeField] public float shootSpeed;
-    [SerializeField] public float timeToShoot;
+    [SerializeField] public float ShootSpeed;
+    [SerializeField] public Transform SpawnPoint;
+    [SerializeField] public GameObject Projectile;
 
-    public Transform spawnPosition;
+    private bool _isInTheField = false;
+    private Transform _targetPlayer;
     
-    private bool isInTheField = false;
-    private Transform targetPlayer;
-
-    public GameObject projectile;
-    private float OriginalTime;
-
+    public static event Action<GameObject> OnEnemyEnteredField;
 
     private void Awake()
     {
-        targetPlayer = GameObject.FindWithTag("Player").transform;
+        _targetPlayer = GameObject.FindWithTag("Player").transform;
 
     }
 
     private void Start()
     {
-        OriginalTime = timeToShoot;
-    }
+        InvokeRepeating("ShootPlayer", 1f, 2f);
 
-    private void FixedUpdate()
-    {
-        if (isInTheField)
-        {
-            timeToShoot -= Time.deltaTime;
-
-            if (timeToShoot < 0)
-            {
-                ShootPlayer();
-
-                timeToShoot = OriginalTime;
-            }
-        }
     }
 
     void ShootPlayer(){
 
-        if (isInTheField){
+        if (_isInTheField){
 
-            GameObject bullet = Instantiate(projectile, spawnPosition.position + transform.forward, transform.rotation);
+            gameObject.transform.LookAt(_targetPlayer.transform);
+            GameObject bullet = Instantiate(Projectile, SpawnPoint.position, transform.rotation);
             Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-            bulletRigidbody.AddForce(transform.forward * shootSpeed);
+            bulletRigidbody.AddForce(transform.forward * ShootSpeed, ForceMode.Impulse);
         }
 
     }
@@ -59,32 +40,16 @@ public class EnemyShooting : MonoBehaviour
     {
         if (other.tag.Equals("Radius"))
         {
-            isInTheField = true;
+            _isInTheField = true;
+            OnEnemyEnteredField?.Invoke(gameObject);
         }
     }
-
-    /*public float range = 10.0f;
-    [SerializeField] public float bulletImpulse= 20.0f;
-
-    public GameObject projectile;
-
-    public float shotDelayTime;
-    public float shotInterval;
-
-    private bool isInThefield = true;
-    void Start(){
-
-        InvokeRepeating("Shoot", shotDelayTime, shotInterval);
-    }
-
-    void Shoot(){
-
-        if (isInThefield){
-
-            GameObject bullet = Instantiate(projectile, transform.position + transform.forward, transform.rotation);
-            Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-            bulletRigidbody.AddForce(transform.forward*bulletImpulse);
+    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag.Equals("Radius"))
+        {
+            _isInTheField = false;
         }
-
-    }*/
+    }
 }

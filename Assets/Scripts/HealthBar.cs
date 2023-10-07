@@ -1,7 +1,43 @@
 
-public class HealthBar : OnPropertychanged
+using System;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class HealthBar : MonoBehaviour
 {
-    private float _progressBarvalue;
+    [SerializeField] public Image HealthbarFill;
+
+    public float _healthBarFullValue = 10;
+    private float _healthBarCurrentValue;
+    private static event Action OnHealthDecreasedEvent;
+    private void Start()
+    {
+        _healthBarCurrentValue = _healthBarFullValue;
+    }
+
+    private void OnEnable()
+    {
+        OnHealthDecreasedEvent += DecreaseHealth;
+    }
+
+    private void OnDisable()
+    {
+        OnHealthDecreasedEvent -= DecreaseHealth;
+    }
     
-    
+    public static void OnHealthDecreased() // Statik metot
+    {
+        OnHealthDecreasedEvent?.Invoke();
+    } 
+    void DecreaseHealth()
+    {
+        _healthBarCurrentValue--;
+        UpdateHealthBar();
+    }
+    void UpdateHealthBar()
+    {
+        HealthbarFill.fillAmount = _healthBarCurrentValue / _healthBarFullValue;
+    }
+
+
 }

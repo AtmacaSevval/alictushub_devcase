@@ -1,26 +1,29 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public int CollectedNumberOfCoins;
+    [SerializeField] private TMP_Text coinText;
+    private int _collectedNumberOfCoins;
     
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals( "Coin"))
         {
-            CollectedNumberOfCoins++;
+            UpdateCoinText();            
             Destroy(other.gameObject);
         }
 
         else if(other.gameObject.tag.Equals( "Enemy"))
         {
-            
-        }
-        
-        else if(other.gameObject.tag.Equals( "EnemyProjectile"))
-        {
-            
+            //Destroy(gameObject);
         }
     }
-    
+
+
+    private void UpdateCoinText()
+    {
+        _collectedNumberOfCoins++;
+        coinText.text = _collectedNumberOfCoins.ToString();
+    }
 }
