@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public int CollectedNumberOfCoins { get; private set; }
-
+    public int CollectedNumberOfCoins;
+    
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals( "Coin"))
