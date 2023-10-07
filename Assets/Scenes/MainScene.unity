@@ -511,6 +511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthbarFill: {fileID: 1778960463}
+  _healthBarFullValue: 10
 --- !u!1 &486457485
 GameObject:
   m_ObjectHideFlags: 0
@@ -2014,6 +2015,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1007967819, guid: 3bdc2dc65518343d09b6d8c43c3d9b5a, type: 3}
+      propertyPath: ShootSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1384751701, guid: 3bdc2dc65518343d09b6d8c43c3d9b5a, type: 3}
       propertyPath: m_FillAmount
       value: 0.922

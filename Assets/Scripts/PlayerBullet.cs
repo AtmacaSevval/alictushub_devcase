@@ -8,8 +8,9 @@ public class PlayerBullet : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Enemy"))
         {
+            Enemy.OnTakeDamage();
+
             Destroy (gameObject);
-            Destroy (other.gameObject);
 
         }
     }

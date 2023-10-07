@@ -33,7 +33,7 @@ public class PlayerShooting : MonoBehaviour
     
     void ShootEnemy(){
 
-        if (_isInTheField){
+        if (_isInTheField && _targetEnemy != null){
 
             gameObject.transform.LookAt(_targetEnemy.transform);
             GameObject bullet = Instantiate(Projectile, SpawnPoint.position, transform.rotation);

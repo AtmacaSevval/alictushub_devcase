@@ -1,4 +1,3 @@
-
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,7 +24,7 @@ public class HealthBar : MonoBehaviour
         OnHealthDecreasedEvent -= DecreaseHealth;
     }
     
-    public static void OnHealthDecreased() // Statik metot
+    public static void OnHealthDecreased()
     {
         OnHealthDecreasedEvent?.Invoke();
     } 
