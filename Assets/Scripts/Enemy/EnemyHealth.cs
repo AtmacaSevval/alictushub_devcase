@@ -3,6 +3,8 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 1;
+    [SerializeField] private float destroyTime = 2.5f;
+
     private int currentHealth;
     
     private EnemyAnimationManager animationManager;
@@ -39,7 +41,7 @@ public class EnemyHealth : MonoBehaviour
 
         animationManager.PlayDeathAnimation();
         gameObject.tag = "Untagged";
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, destroyTime);
 
     }
 }

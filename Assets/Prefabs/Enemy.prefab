@@ -93,8 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7019852d8a23a41a4803dcf9cca0d0c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
-  rotationSpeed: 3
+  moveSpeed: 2
+  rotationSpeed: 2
 --- !u!114 &8144196134614618211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootSpeed: 10
   shootingStartDelay: 1
-  shootingInterval: 5
+  shootingInterval: 3
   spawnPointOfProjectile: {fileID: 1170384147642616299}
   projectile: {fileID: 6193327468799196600, guid: 3c37ae32d90f448fdb6ab35f054bb6f2,
     type: 3}

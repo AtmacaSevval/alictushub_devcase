@@ -1912,7 +1912,7 @@ MonoBehaviour:
   spawnablePrefab: {fileID: 8679732570826089244, guid: 5bc2a6a47ba9e4b96919fbc1805001e7,
     type: 3}
   parentTransform: {fileID: 1469423007}
-  startDelay: 2
+  startDelay: 0.01
   spawnInterval: 1
 --- !u!1 &1769181817
 GameObject:
@@ -2722,14 +2722,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1007967819, guid: 3bdc2dc65518343d09b6d8c43c3d9b5a, type: 3}
-      propertyPath: shootSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1007967819, guid: 3bdc2dc65518343d09b6d8c43c3d9b5a, type: 3}
-      propertyPath: shootingInterval
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1007967820, guid: 3bdc2dc65518343d09b6d8c43c3d9b5a, type: 3}
       propertyPath: healthBarFill
       value: 
@@ -2804,6 +2796,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2363181252452386851, guid: 3bdc2dc65518343d09b6d8c43c3d9b5a, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bdc2dc65518343d09b6d8c43c3d9b5a, type: 3}

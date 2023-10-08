@@ -1202,9 +1202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80036188ca2de4607a51a7d583c1adbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootSpeed: 5
+  shootSpeed: 8
   shootingStartDelay: 1
-  shootingInterval: 2
+  shootingInterval: 0.5
   spawnPointOfProjectile: {fileID: 5485383728856595371}
   projectile: {fileID: 1730651215559000263, guid: 02514a2da0eb24b58850f6d3b8fe5285,
     type: 3}
@@ -1223,8 +1223,8 @@ MonoBehaviour:
   joystick: {fileID: 0}
   controller: {fileID: 6625290746354938034}
   playerAnimationManager: {fileID: 543450652320204933}
-  movementSpeed: 5
-  rotationSpeed: 10
+  movementSpeed: 2
+  rotationSpeed: 2
   inputCanvas: {fileID: 0}
 --- !u!114 &1007967820
 MonoBehaviour:
@@ -1884,7 +1884,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boomerang
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8070342561346104675, guid: 02514a2da0eb24b58850f6d3b8fe5285, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 02514a2da0eb24b58850f6d3b8fe5285, type: 3}
 --- !u!4 &6664056043351834429 stripped
 Transform:
