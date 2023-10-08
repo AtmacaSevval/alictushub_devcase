@@ -5,6 +5,15 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private int maxHealth = 1;
     private int currentHealth;
     
+    private EnemyAnimationManager animationManager;
+    
+    public bool IsDead { get; private set; }
+
+    private void Awake()
+    {
+        animationManager = GetComponentInChildren<EnemyAnimationManager>();
+    }
+    
     private void Start()
     {
         currentHealth = maxHealth;
@@ -26,6 +35,10 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject);
+        IsDead = true;
+
+        animationManager.PlayDeathAnimation();
+        Destroy(gameObject, 2f);
+
     }
 }

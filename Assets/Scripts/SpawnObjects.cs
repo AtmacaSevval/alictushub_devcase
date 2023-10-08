@@ -3,30 +3,35 @@ using Random = UnityEngine.Random;
 
 public class SpawnObjects : MonoBehaviour
 {
-    [SerializeField] public Transform Plane;
-    [SerializeField] public GameObject SpawnablePrefab;
-    [SerializeField] public Transform ParentTransform;
+    [SerializeField] private Transform plane;
+    [SerializeField] private GameObject spawnablePrefab;
+    [SerializeField] private Transform parentTransform;
 
-    [SerializeField] public float startDelay;
-    [SerializeField] public float spawnInterval;
+    [SerializeField] private float startDelay;
+    [SerializeField] private float spawnInterval;
     
-    private float _xValue;
-    private float _zValue;
+    private float xValue;
+    private float zValue;
     
     void Start()
     {
-        _xValue = Plane.GetComponent<MeshRenderer>().bounds.size.x / 2;
-        _zValue = Plane.GetComponent<MeshRenderer>().bounds.size.z / 2; 
-        
-        InvokeRepeating("Spawn", startDelay, spawnInterval);
+        FindBoundsOfPlane();
 
+        InvokeRepeating("Spawn", startDelay, spawnInterval);
     }
+
+    private void FindBoundsOfPlane()
+    {
+        xValue = plane.GetComponent<MeshRenderer>().bounds.size.x / 2;
+        zValue = plane.GetComponent<MeshRenderer>().bounds.size.z / 2;
+    }
+
     void Spawn()
     {
-        GameObject spawnedObject = Instantiate(SpawnablePrefab, Vector3.zero, Quaternion.identity, ParentTransform);
+        GameObject spawnedObject = Instantiate(spawnablePrefab, Vector3.zero, Quaternion.identity, parentTransform);
 
-        var randomXPosition = Random.Range(-_xValue, _xValue);
-        var randomZPosition = Random.Range(-_zValue, _zValue);
+        var randomXPosition = Random.Range(-xValue, xValue);
+        var randomZPosition = Random.Range(-zValue, zValue);
 
         spawnedObject.transform.position = new Vector3(randomXPosition,0.5f, randomZPosition);
     }

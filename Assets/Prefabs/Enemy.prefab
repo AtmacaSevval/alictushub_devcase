@@ -121,9 +121,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootSpeed: 10
+  shootingStartDelay: 1
+  shootingInterval: 5
   spawnPointOfProjectile: {fileID: 1170384147642616299}
   projectile: {fileID: 6193327468799196600, guid: 3c37ae32d90f448fdb6ab35f054bb6f2,
     type: 3}
+  shootingRange: 15
 --- !u!1001 &8679732570443477830
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -234,6 +237,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &5252743596136339515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8409895167794269719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d39e6d5728c984d208af8083ee815c41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &9222848344514532525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7d9d0ee977c764bcfab3fcb89839aedc,

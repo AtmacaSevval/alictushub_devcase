@@ -1,47 +1,30 @@
 using UnityEngine;
 
-public class PlayerShooting : MonoBehaviour
+public class PlayerShooting : BaseShooter
 {
-    [SerializeField] private float shootSpeed;
-    [SerializeField] private Transform spawnPointOfProjectile;
-    [SerializeField] private GameObject projectile;
-
-    private bool isInTheField = false;
-    private GameObject targetEnemy;
-
-    private void Start()
-    {
-        InvokeRepeating("ShootEnemy", 1f, 2f);
-
-    }
     private void OnEnable()
     {
         EnemyShooting.OnEnemyEnteredField += HandleEnemyEnteredField;
+        EnemyShooting.OnEnemyExitField += HandleEnemyExitField;
+
     }
 
     private void OnDisable()
     {
         EnemyShooting.OnEnemyEnteredField -= HandleEnemyEnteredField;
+        EnemyShooting.OnEnemyExitField -= HandleEnemyExitField;
+
     }
 
     private void HandleEnemyEnteredField(GameObject enemy)
     {
         isInTheField = true;
-        targetEnemy = enemy;
+        targetTransform = enemy.transform;
     }
     
-    void ShootEnemy(){
-
-        if (isInTheField && targetEnemy != null){
-
-            gameObject.transform.LookAt(targetEnemy.transform);
-            
-            GameObject bullet = Instantiate(projectile, spawnPointOfProjectile.position, transform.rotation);
-            
-            Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-            bulletRigidbody.AddForce(transform.forward * shootSpeed, ForceMode.Impulse);
-        }
-
+    private void HandleEnemyExitField()
+    {
+        isInTheField = false;
+        targetTransform = null;
     }
-    
 }

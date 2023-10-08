@@ -1,57 +1,61 @@
 using System;
 using UnityEngine;
 
-public class EnemyShooting : MonoBehaviour
+public class EnemyShooting : BaseShooter
 {
-    [SerializeField] private float shootSpeed;
-    [SerializeField] private Transform spawnPointOfProjectile;
-    [SerializeField] private GameObject projectile;
-
-    private bool isInTheField = false;
-    private Transform targetPlayer;
-    
+    [SerializeField] private int shootingRange;
     public static event Action<GameObject> OnEnemyEnteredField;
+    public static event Action OnEnemyExitField;
+    
+    private EnemyAnimationManager animationManager;
+    private EnemyHealth enemyHealth;
+
 
     private void Awake()
     {
-        targetPlayer = GameObject.FindWithTag("Player").transform;
-
+        enemyHealth = GetComponent<EnemyHealth>();
+        animationManager = GetComponentInChildren<EnemyAnimationManager>();
     }
 
-    private void Start()
+    protected override void Start()
     {
-        InvokeRepeating("ShootPlayer", 1f, 2f);
-
+        base.Start();
+        targetTransform = GameObject.FindWithTag("Player").transform;
     }
 
-    void ShootPlayer(){
-
-        if (isInTheField){
-
-            gameObject.transform.LookAt(targetPlayer.transform);
-            
-            GameObject bullet = Instantiate(projectile, spawnPointOfProjectile.position, transform.rotation);
-            Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-            
-            bulletRigidbody.AddForce(transform.forward * shootSpeed, ForceMode.Impulse);
+    private void Update()
+    {
+        if (enemyHealth.IsDead)
+        {
+            isInTheField = false;
+            StopShooting();
         }
-
-    }
-    
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag.Equals("Radius"))
+        if (Vector3.Distance(transform.position, targetTransform.position) < shootingRange)
         {
             isInTheField = true;
+        }
+        else
+        {
+            isInTheField = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Radius"))
+        {
+            animationManager.PlayEnteredFieldAnimation();
             OnEnemyEnteredField?.Invoke(gameObject);
         }
     }
-    
+
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag.Equals("Radius"))
+        if (other.CompareTag("Radius"))
         {
-            isInTheField = false;
+            animationManager.StopEnteredFieldAnimation();
+            OnEnemyExitField?.Invoke();
+
         }
     }
 }
