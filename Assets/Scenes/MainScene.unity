@@ -1912,7 +1912,7 @@ MonoBehaviour:
   spawnablePrefab: {fileID: 8679732570826089244, guid: 5bc2a6a47ba9e4b96919fbc1805001e7,
     type: 3}
   parentTransform: {fileID: 1469423007}
-  startDelay: 0.01
+  startDelay: 0
   spawnInterval: 1
 --- !u!1 &1769181817
 GameObject:
