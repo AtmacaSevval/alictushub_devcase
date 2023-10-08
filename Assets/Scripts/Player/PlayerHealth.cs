@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     
     private float currentHealth;
     private static event Action OnHealthDecreasedEvent;
+    public static event Action OnPlayerDied;
     
     public bool IsDead { get; private set; }
     private PlayerAnimationManager animationManager;
@@ -45,10 +46,16 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            animationManager.PlayDeathAnimation();
+            Die();
         }
     }
-    
+
+    public void Die()
+    {
+        animationManager.PlayDeathAnimation();
+        OnPlayerDied?.Invoke();
+    }
+
     void UpdateHealthBar()
     {
         healthBarFill.fillAmount = currentHealth / maximumHealth;

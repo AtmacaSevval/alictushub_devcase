@@ -1,7 +1,15 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private PlayerHealth playerHealth;
+
+    private void Awake()
+    {
+        playerHealth = GetComponentInParent<PlayerHealth>();
+    }
+    
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals( "Coin"))
@@ -12,7 +20,7 @@ public class Player : MonoBehaviour
 
         else if(other.gameObject.tag.Equals( "Enemy"))
         {
-            //Destroy(gameObject);
+            playerHealth.Die();
         }
     }
 }

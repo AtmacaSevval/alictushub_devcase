@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &134232143
 RectTransform:
   m_ObjectHideFlags: 0
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.922
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -1205,7 +1205,8 @@ GameObject:
   - component: {fileID: 6625290745580487054}
   - component: {fileID: 6625290745580487049}
   - component: {fileID: 6625290745580487051}
-  - component: {fileID: 6625290745580487048}
+  - component: {fileID: 543450652320204932}
+  - component: {fileID: 543450652320204933}
   m_Layer: 0
   m_Name: MainCharacter
   m_TagString: Player
@@ -1283,7 +1284,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &6625290745580487048
+--- !u!114 &543450652320204932
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1292,11 +1293,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 6282709519555312832}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53a043609864b2481baa908eb9ad56, type: 3}
+  m_Script: {fileID: 11500000, guid: f94163c2679054bf19c1793e52e50917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinText: {fileID: 0}
-  numberOfEnemyKilledText: {fileID: 0}
+--- !u!114 &543450652320204933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6282709519555312832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f744defde6fb489eb2f6bf854a9f4fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6480363956335231959
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,6 +1415,8 @@ GameObject:
   - component: {fileID: 6625290746354938045}
   - component: {fileID: 6625290746354938034}
   - component: {fileID: 1007967819}
+  - component: {fileID: 2537491621189255010}
+  - component: {fileID: 1007967820}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -1459,10 +1472,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80036188ca2de4607a51a7d583c1adbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootSpeed: 0
+  shootSpeed: 5
+  shootingStartDelay: 1
+  shootingInterval: 2
   spawnPointOfProjectile: {fileID: 5485383728856595371}
   projectile: {fileID: 1730651215559000263, guid: 02514a2da0eb24b58850f6d3b8fe5285,
     type: 3}
+--- !u!114 &2537491621189255010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6625290746354938044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 663612571f5324a56a9fead606fbb5ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joystick: {fileID: 0}
+  controller: {fileID: 6625290746354938034}
+  playerAnimator: {fileID: 6625290745580487051}
+  movementSpeed: 5
+  rotationSpeed: 10
+  inputCanvas: {fileID: 0}
+  playerAnimationManager: {fileID: 543450652320204933}
+--- !u!114 &1007967820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6625290746354938044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd1eea6a540d4dbeaa1e778f7a3a948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarFill: {fileID: 0}
+  maximumHealth: 10
 --- !u!1 &6625290746562889065
 GameObject:
   m_ObjectHideFlags: 0
