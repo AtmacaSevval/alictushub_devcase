@@ -10,8 +10,7 @@ public class EnemyShooting : BaseShooter
     
     private EnemyAnimationManager animationManager;
     private EnemyHealth enemyHealth;
-
-
+    
     private void Awake()
     {
         enemyHealth = GetComponent<EnemyHealth>();

@@ -10,7 +10,6 @@ public class PlayerStats : Singleton<PlayerStats>
      static int _numberOfEnemyKilled;
     
     private const string COIN_KEY = "CollectedCoins";
-    private const string KILL_KEY = "EnemyKilled";
     
     private void Start()
     {
@@ -22,7 +21,6 @@ public class PlayerStats : Singleton<PlayerStats>
     private void LoadStats()
     {
         _collectedNumberOfCoins = PlayerPrefs.GetInt(COIN_KEY, 0);
-        _numberOfEnemyKilled = PlayerPrefs.GetInt(KILL_KEY, 0);
     }
     public void UpdateCoins()
     {
@@ -43,8 +41,6 @@ public class PlayerStats : Singleton<PlayerStats>
     public void UpdateKills()
     {
         _numberOfEnemyKilled++;
-        PlayerPrefs.SetInt(KILL_KEY, _numberOfEnemyKilled);
-        
         UpdateKillText();
     }
     

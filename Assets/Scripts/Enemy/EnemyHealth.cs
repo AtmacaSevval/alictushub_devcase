@@ -38,7 +38,7 @@ public class EnemyHealth : MonoBehaviour
         IsDead = true;
 
         animationManager.PlayDeathAnimation();
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 5f);
 
     }
 }

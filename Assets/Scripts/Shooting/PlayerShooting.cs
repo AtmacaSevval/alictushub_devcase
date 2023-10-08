@@ -1,7 +1,15 @@
+using System;
 using UnityEngine;
 
 public class PlayerShooting : BaseShooter
 {
+    private PlayerHealth playerHealth;
+
+    private void Awake()
+    {
+        playerHealth = GetComponent<PlayerHealth>();
+    }
+
     private void OnEnable()
     {
         EnemyShooting.OnEnemyEnteredField += HandleEnemyEnteredField;
@@ -14,6 +22,14 @@ public class PlayerShooting : BaseShooter
         EnemyShooting.OnEnemyEnteredField -= HandleEnemyEnteredField;
         EnemyShooting.OnEnemyExitField -= HandleEnemyExitField;
 
+    }
+
+    private void Update()
+    {
+        if (playerHealth.IsDead)
+        {
+            StopShooting();
+        }
     }
 
     private void HandleEnemyEnteredField(GameObject enemy)
