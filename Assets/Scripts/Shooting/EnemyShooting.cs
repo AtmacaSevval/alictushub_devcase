@@ -4,6 +4,7 @@ using UnityEngine;
 public class EnemyShooting : BaseShooter
 {
     [SerializeField] private int shootingRange;
+    
     public static event Action<GameObject> OnEnemyEnteredField;
     public static event Action OnEnemyExitField;
     
@@ -27,9 +28,14 @@ public class EnemyShooting : BaseShooter
     {
         if (enemyHealth.IsDead)
         {
-            isInTheField = false;
             StopShooting();
         }
+
+        CheckInRange();
+    }
+
+    private void CheckInRange()
+    {
         if (Vector3.Distance(transform.position, targetTransform.position) < shootingRange)
         {
             isInTheField = true;

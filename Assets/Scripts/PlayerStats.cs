@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class PlayerInventory : Singleton<PlayerInventory>
+public class PlayerStats : Singleton<PlayerStats>
 {
     [SerializeField] private TMP_Text coinText;
     private int collectedNumberOfCoins;

@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.tag.Equals( "Coin"))
         {
-            PlayerInventory.Instance.UpdateCoins();            
+            PlayerStats.Instance.UpdateCoins();            
             Destroy(other.gameObject);
         }
 

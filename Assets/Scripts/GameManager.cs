@@ -1,12 +1,9 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {    
-    public static event Action OnPlayerDied;
-
-    public bool IsGameOver { get; private set; } = false;
+    public bool IsGameOver { get; private set; }
 
     public GameObject gameOverUI;
 

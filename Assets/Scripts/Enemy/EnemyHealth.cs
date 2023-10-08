@@ -29,7 +29,7 @@ public class EnemyHealth : MonoBehaviour
         {
             Die();
             
-            PlayerInventory.Instance.UpdateKills();
+            PlayerStats.Instance.UpdateKills();
         }
     }
 

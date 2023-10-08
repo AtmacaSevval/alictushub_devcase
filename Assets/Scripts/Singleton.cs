@@ -1,19 +1,29 @@
 using UnityEngine;
 
-public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+public class Singleton<TSingleton> : MonoBehaviour where TSingleton : MonoBehaviour
 {
-    public static T Instance { get; private set; }
+    private static TSingleton _instance;
 
-    protected virtual void Awake()
+    public static TSingleton Instance
     {
-        if (Instance == null)
+        get
         {
-            Instance = this as T;
-            DontDestroyOnLoad(gameObject);
+            if (_instance == null)
+                _instance = FindObjectOfType<TSingleton>();
+
+            return _instance;
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+    }
+
+    private void OnDestroy()
+    {
+        _instance = null;
+
+        OnDestroyCore();
+    }
+
+    protected virtual void OnDestroyCore()
+    {
+        
     }
 }
