@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -20,7 +19,7 @@ public class Player : MonoBehaviour
 
         else if(other.gameObject.tag.Equals( "Enemy"))
         {
-            playerHealth.Die();
+            playerHealth.ResetHealth();
         }
     }
 }

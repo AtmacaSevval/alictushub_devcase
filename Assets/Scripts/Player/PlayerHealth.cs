@@ -49,13 +49,17 @@ public class PlayerHealth : MonoBehaviour
             Die();
         }
     }
-
-    public void Die()
+    public void ResetHealth()
     {
         currentHealth = 0;
-        IsDead = true;
         UpdateHealthBar();
-        
+
+        Die();
+    }
+    void Die()
+    {
+        IsDead = true;
+
         animationManager.PlayDeathAnimation();
         OnPlayerDied?.Invoke();
     }
