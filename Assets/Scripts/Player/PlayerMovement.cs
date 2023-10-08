@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateAnimation(Vector3 movementDirection)
     {
-        bool isRunning = movementDirection.sqrMagnitude > 0;
+        bool isRunning = movementDirection.sqrMagnitude > 0.1f;
         
         playerAnimationManager.SetAnimation(isRunning);
     }
