@@ -38,6 +38,7 @@ public class EnemyHealth : MonoBehaviour
         IsDead = true;
 
         animationManager.PlayDeathAnimation();
+        gameObject.tag = "Untagged";
         Destroy(gameObject, 5f);
 
     }

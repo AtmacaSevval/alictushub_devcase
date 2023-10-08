@@ -7,7 +7,7 @@ public class PlayerStats : Singleton<PlayerStats>
     static int _collectedNumberOfCoins;
     
     [SerializeField] private TMP_Text numberOfEnemyKilledText;
-     static int _numberOfEnemyKilled;
+    private int _numberOfEnemyKilled;
     
     private const string COIN_KEY = "CollectedCoins";
     
@@ -15,6 +15,7 @@ public class PlayerStats : Singleton<PlayerStats>
     {
         LoadStats();
         UpdateCoinText();
+        
         UpdateKillText();
     }
     

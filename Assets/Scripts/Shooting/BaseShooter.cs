@@ -3,8 +3,8 @@ using UnityEngine;
 public class BaseShooter : MonoBehaviour
 {
     [SerializeField] protected float shootSpeed;
-    [SerializeField] protected int shootingStartDelay;
-    [SerializeField] protected int shootingInterval;
+    [SerializeField] protected float shootingStartDelay;
+    [SerializeField] protected float shootingInterval;
 
     [SerializeField] protected Transform spawnPointOfProjectile;
     [SerializeField] protected GameObject projectile;
