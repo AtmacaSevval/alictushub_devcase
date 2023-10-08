@@ -10,6 +10,7 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         gameOverUI.SetActive(false);
+        Time.timeScale = 1;
     }
 
     private void OnEnable()
@@ -26,6 +27,7 @@ public class GameManager : Singleton<GameManager>
     {
         IsGameOver = true;
         gameOverUI.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void RestartGame()
