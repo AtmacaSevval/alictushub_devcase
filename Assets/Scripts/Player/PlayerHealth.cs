@@ -53,6 +53,7 @@ public class PlayerHealth : MonoBehaviour
     public void Die()
     {
         currentHealth = 0;
+        IsDead = true;
         UpdateHealthBar();
         
         animationManager.PlayDeathAnimation();
