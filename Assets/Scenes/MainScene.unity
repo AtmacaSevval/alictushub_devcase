@@ -2726,6 +2726,10 @@ PrefabInstance:
       propertyPath: healthBarFill
       value: 
       objectReference: {fileID: 799154541}
+    - target: {fileID: 1825322577, guid: 3bdc2dc65518343d09b6d8c43c3d9b5a, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 2537491621189255010, guid: 3bdc2dc65518343d09b6d8c43c3d9b5a,
         type: 3}
       propertyPath: joystick

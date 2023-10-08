@@ -22,8 +22,8 @@ public class SpawnObjects : MonoBehaviour
 
     private void FindBoundsOfPlane()
     {
-        xValue = plane.GetComponent<MeshRenderer>().bounds.size.x / 2 - 10 ;
-        zValue = plane.GetComponent<MeshRenderer>().bounds.size.z / 2 - 10;
+        xValue = plane.GetComponent<MeshRenderer>().bounds.size.x / 2 - 20 ;
+        zValue = plane.GetComponent<MeshRenderer>().bounds.size.z / 2 - 20;
     }
 
     void Spawn()
