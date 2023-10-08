@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 1176946895}
   - component: {fileID: 1176946897}
   - component: {fileID: 1176946896}
+  - component: {fileID: 407117146}
   m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
@@ -178,6 +179,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &407117146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176946894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd1eea6a540d4dbeaa1e778f7a3a948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarFill: {fileID: 0}
+  maximumHealth: 10
 --- !u!1 &1384751699
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,7 +264,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0.922
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -1280,7 +1295,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc53a043609864b2481baa908eb9ad56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollectedNumberOfCoins: 0
+  coinText: {fileID: 0}
+  numberOfEnemyKilledText: {fileID: 0}
 --- !u!1 &6480363956335231959
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,7 +1339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5485383728856595371}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1443,9 +1459,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80036188ca2de4607a51a7d583c1adbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShootSpeed: 0
-  SpawnPoint: {fileID: 5485383728856595371}
-  Projectile: {fileID: 1730651215559000263, guid: 02514a2da0eb24b58850f6d3b8fe5285,
+  shootSpeed: 0
+  spawnPointOfProjectile: {fileID: 5485383728856595371}
+  projectile: {fileID: 1730651215559000263, guid: 02514a2da0eb24b58850f6d3b8fe5285,
     type: 3}
 --- !u!1 &6625290746562889065
 GameObject:

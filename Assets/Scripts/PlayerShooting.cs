@@ -2,13 +2,18 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    [SerializeField] public float ShootSpeed;
-    [SerializeField] public Transform SpawnPoint;
-    [SerializeField] public GameObject Projectile;
+    [SerializeField] private float shootSpeed;
+    [SerializeField] private Transform spawnPointOfProjectile;
+    [SerializeField] private GameObject projectile;
 
-    private bool _isInTheField = false;
-    private GameObject _targetEnemy;
+    private bool isInTheField = false;
+    private GameObject targetEnemy;
 
+    private void Start()
+    {
+        InvokeRepeating("ShootEnemy", 1f, 2f);
+
+    }
     private void OnEnable()
     {
         EnemyShooting.OnEnemyEnteredField += HandleEnemyEnteredField;
@@ -21,24 +26,20 @@ public class PlayerShooting : MonoBehaviour
 
     private void HandleEnemyEnteredField(GameObject enemy)
     {
-        _isInTheField = true;
-        _targetEnemy = enemy;
-    }
-    
-    private void Start()
-    {
-        InvokeRepeating("ShootEnemy", 1f, 2f);
-
+        isInTheField = true;
+        targetEnemy = enemy;
     }
     
     void ShootEnemy(){
 
-        if (_isInTheField && _targetEnemy != null){
+        if (isInTheField && targetEnemy != null){
 
-            gameObject.transform.LookAt(_targetEnemy.transform);
-            GameObject bullet = Instantiate(Projectile, SpawnPoint.position, transform.rotation);
+            gameObject.transform.LookAt(targetEnemy.transform);
+            
+            GameObject bullet = Instantiate(projectile, spawnPointOfProjectile.position, transform.rotation);
+            
             Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-            bulletRigidbody.AddForce(transform.forward * ShootSpeed, ForceMode.Impulse);
+            bulletRigidbody.AddForce(transform.forward * shootSpeed, ForceMode.Impulse);
         }
 
     }

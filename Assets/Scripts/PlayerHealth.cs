@@ -2,23 +2,23 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] public Image HealthbarFill;
-
-    public float _healthBarFullValue = 10;
-    private float _healthBarCurrentValue;
+    [SerializeField] private Image healthBarFill;
+    [SerializeField] private float maximumHealth = 10;
+    
+    private float currentHealth;
     private static event Action OnHealthDecreasedEvent;
     private void Start()
     {
-        _healthBarCurrentValue = _healthBarFullValue;
+        currentHealth = maximumHealth;
     }
 
     private void OnEnable()
     {
         OnHealthDecreasedEvent += DecreaseHealth;
     }
-
+    
     private void OnDisable()
     {
         OnHealthDecreasedEvent -= DecreaseHealth;
@@ -28,15 +28,15 @@ public class HealthBar : MonoBehaviour
     {
         OnHealthDecreasedEvent?.Invoke();
     } 
+    
     void DecreaseHealth()
     {
-        _healthBarCurrentValue--;
+        currentHealth--;
         UpdateHealthBar();
     }
+    
     void UpdateHealthBar()
     {
-        HealthbarFill.fillAmount = _healthBarCurrentValue / _healthBarFullValue;
+        healthBarFill.fillAmount = currentHealth / maximumHealth;
     }
-
-
 }

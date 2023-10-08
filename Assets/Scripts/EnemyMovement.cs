@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float moveSpeed;
-    public float rotationSpeed;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float rotationSpeed;
+    
     private Transform targetPlayer;
 
     private void Awake()

@@ -3,18 +3,18 @@ using UnityEngine;
 
 public class EnemyShooting : MonoBehaviour
 {
-    [SerializeField] public float ShootSpeed;
-    [SerializeField] public Transform SpawnPoint;
-    [SerializeField] public GameObject Projectile;
+    [SerializeField] private float shootSpeed;
+    [SerializeField] private Transform spawnPointOfProjectile;
+    [SerializeField] private GameObject projectile;
 
-    private bool _isInTheField = false;
-    private Transform _targetPlayer;
+    private bool isInTheField = false;
+    private Transform targetPlayer;
     
     public static event Action<GameObject> OnEnemyEnteredField;
 
     private void Awake()
     {
-        _targetPlayer = GameObject.FindWithTag("Player").transform;
+        targetPlayer = GameObject.FindWithTag("Player").transform;
 
     }
 
@@ -26,12 +26,14 @@ public class EnemyShooting : MonoBehaviour
 
     void ShootPlayer(){
 
-        if (_isInTheField){
+        if (isInTheField){
 
-            gameObject.transform.LookAt(_targetPlayer.transform);
-            GameObject bullet = Instantiate(Projectile, SpawnPoint.position, transform.rotation);
+            gameObject.transform.LookAt(targetPlayer.transform);
+            
+            GameObject bullet = Instantiate(projectile, spawnPointOfProjectile.position, transform.rotation);
             Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-            bulletRigidbody.AddForce(transform.forward * ShootSpeed, ForceMode.Impulse);
+            
+            bulletRigidbody.AddForce(transform.forward * shootSpeed, ForceMode.Impulse);
         }
 
     }
@@ -40,7 +42,7 @@ public class EnemyShooting : MonoBehaviour
     {
         if (other.tag.Equals("Radius"))
         {
-            _isInTheField = true;
+            isInTheField = true;
             OnEnemyEnteredField?.Invoke(gameObject);
         }
     }
@@ -49,7 +51,7 @@ public class EnemyShooting : MonoBehaviour
     {
         if (other.tag.Equals("Radius"))
         {
-            _isInTheField = false;
+            isInTheField = false;
         }
     }
 }

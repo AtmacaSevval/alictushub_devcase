@@ -6,7 +6,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Player"))
         {
-            HealthBar.OnHealthDecreased();
+            PlayerHealth.OnHealthDecreased();
             Destroy(gameObject);
 
         }

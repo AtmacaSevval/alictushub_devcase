@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
@@ -8,7 +6,11 @@ public class PlayerBullet : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Enemy"))
         {
-            Enemy.OnTakeDamage();
+            EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage();
+            }
 
             Destroy (gameObject);
 
