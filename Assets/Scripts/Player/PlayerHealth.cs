@@ -9,6 +9,15 @@ public class PlayerHealth : MonoBehaviour
     
     private float currentHealth;
     private static event Action OnHealthDecreasedEvent;
+    
+    public bool IsDead { get; private set; }
+    private PlayerAnimationManager animationManager;
+
+    private void Awake()
+    {
+        animationManager = GetComponentInChildren<PlayerAnimationManager>();
+    }
+    
     private void Start()
     {
         currentHealth = maximumHealth;
@@ -33,6 +42,11 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth--;
         UpdateHealthBar();
+
+        if (currentHealth <= 0)
+        {
+            animationManager.PlayDeathAnimation();
+        }
     }
     
     void UpdateHealthBar()

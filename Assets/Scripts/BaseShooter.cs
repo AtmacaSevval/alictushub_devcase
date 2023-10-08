@@ -20,7 +20,7 @@ public class BaseShooter : MonoBehaviour
     {
         InvokeRepeating("ShootTarget", shootingStartDelay, shootingInterval);
     }
-    public void StopShooting()
+    protected void StopShooting()
     {
         CancelInvoke("ShootTarget");
     }

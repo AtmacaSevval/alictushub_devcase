@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -12,6 +13,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Canvas inputCanvas;
     
     private bool isJoystickActive;
+    
+    private PlayerHealth playerHealth;
+    [SerializeField] private PlayerAnimationManager playerAnimationManager;
+
+    private void Awake()
+    {
+        playerHealth = GetComponent<PlayerHealth>();
+    }
 
     private void Start()
     {
@@ -31,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleJoystickMovement()
     {
-        if (!isJoystickActive) return;
+        if (!isJoystickActive || playerHealth.IsDead) return;
 
         Vector3 movementDirection = new Vector3(joystick.Direction.x, 0.0f, joystick.Direction.y);
         MovePlayer(movementDirection);
@@ -57,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateAnimation(Vector3 movementDirection)
     {
         bool isRunning = movementDirection.sqrMagnitude > 0;
-        playerAnimator.SetBool("run", isRunning);
+        
+        playerAnimationManager.SetAnimation(isRunning);
     }
 }
