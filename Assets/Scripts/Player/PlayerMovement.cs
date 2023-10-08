@@ -4,8 +4,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private VariableJoystick joystick;
     [SerializeField] private CharacterController controller;
-    [SerializeField] private Animator playerAnimator;
-
+    [SerializeField] private PlayerAnimationManager playerAnimationManager;
+    
     [SerializeField] private float movementSpeed;
     [SerializeField] private float rotationSpeed;
     
@@ -14,8 +14,6 @@ public class PlayerMovement : MonoBehaviour
     private bool isJoystickActive;
     
     private PlayerHealth playerHealth;
-    [SerializeField] private PlayerAnimationManager playerAnimationManager;
-
     private void Awake()
     {
         playerHealth = GetComponent<PlayerHealth>();
